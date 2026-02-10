@@ -9,7 +9,7 @@ import { FireworkType } from "./types";
 import { motion } from "framer-motion";
 
 const App: React.FC = () => {
-  const [audioEnabled, setAudioEnabled] = useState(false);
+  const [audioEnabled, setAudioEnabled] = useState(true);
   const fireworksRef = useRef<FireworksHandle>(null);
 
   const toggleAudio = () => {
