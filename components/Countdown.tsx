@@ -49,7 +49,7 @@ const TimeBlock: React.FC<TimeBlockProps> = ({ value, label }) => {
     <div className="flex flex-col items-center">
       <div className="relative w-20 h-24 md:w-32 md:h-40 bg-gradient-to-b from-red-800 to-red-950 rounded-lg shadow-2xl border-2 border-yellow-600/30 flex items-center justify-center overflow-hidden">
         {/* Subtle pattern overlay */}
-        <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/black-scales.png')]"></div>
+        <div className="absolute inset-0 opacity-10 bg-[url('/textures/black-scales.png')]"></div>
 
         <AnimatePresence mode="popLayout">
           <motion.span

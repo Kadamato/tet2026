@@ -4,6 +4,7 @@ import Fireworks, { FireworksHandle } from "./components/Fireworks";
 import Lantern from "./components/Lantern";
 import MarqueeHeader from "./components/MarqueeHeader";
 import TestControls from "./components/TestControls";
+import { FortuneTeller } from "./components/FortuneTeller";
 import { FireworkType } from "./types";
 
 import { motion } from "framer-motion";
@@ -43,7 +44,7 @@ const App: React.FC = () => {
               strokeWidth={1.5}
               stroke="currentColor"
               className="w-6 h-6"
-            >
+            > 
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -71,7 +72,7 @@ const App: React.FC = () => {
 
       {/* Background Gradient & Texture */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#2c0808] via-[#1a0505] to-[#0f0202]"></div>
-      <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')] mix-blend-overlay"></div>
+      <div className="absolute inset-0 opacity-20 bg-[url('/textures/asfalt-dark.png')] mix-blend-overlay"></div>
 
       {/* Decorative Lanterns */}
       <div className="absolute top-12 w-full flex justify-between px-10 md:px-32 pointer-events-none z-20">
@@ -93,7 +94,7 @@ const App: React.FC = () => {
             <div className="h-[1px] w-8 md:w-12 bg-yellow-500/50"></div>
             <p className="text-red-200 text-lg md:text-2xl font-serif italic tracking-wide">
               Năm con ngựa
-            </p>
+            </p> 
             <div className="h-[1px] w-8 md:w-12 bg-yellow-500/50"></div>
           </div>
         </motion.div>
@@ -110,6 +111,9 @@ const App: React.FC = () => {
 
       {/* Interactive & Ambient Fireworks */}
       <Fireworks ref={fireworksRef} audioEnabled={audioEnabled} />
+
+      {/* Fortune Teller */}
+      <FortuneTeller />
 
       {/* Test Controls (Environment based) */}
       <TestControls onLaunch={handleManualLaunch} />

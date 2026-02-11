@@ -1,0 +1,295 @@
+{
+  "bo_xam": "Quan Âm Linh Xăm",
+  "tong_so_que": 32,
+  "dinh_dang": "A (giữ nguyên thơ xuống dòng)",
+  "que": [
+    {
+      "id": 1,
+      "ten": "Thăng Tấn",
+      "phan_loai": "Thượng đại kiết",
+      "ke_goc": "Thể phụng các bay vào,\nLinh qui ứng kiết hào,\nHọa trừ, phước lộc đến,\nHớn hở đặng danh cao",
+      "phien_am": "Thể phụng các bay vào,\nLinh qui ứng kiết hào,\nHọa trừ, phước lộc đến,\nHớn hở đặng danh cao",
+      "dich_nghia": "",
+      "luan_giai_dan_gian": "Quẻ ứng cầu tài rất tốt,\nRa vào đẹp ý vui lòng,\nThị phị, kiện cáo, thảy trừ xong,\nBịnh hoạn từ đạy thuyên giảm,\nViệc tính thấy nên trước mắt,\nNgười đi sớm tối chắc về,\nTai qua họa khỏi, phước nhiều bề,\nMừng đặng giàu sang phẩm trọng.\n$$$"
+    },
+    {
+      "id": 2,
+      "ten": "Tùng - Cách",
+      "phan_loai": "Thượng trung kiết",
+      "ke_goc": "Lối xưa khá cải liền,\nViệc mới phải cần chuyên,\nCá vượt Long Môn khỏi,\nCốt phàm hóa Thánh Tiên",
+      "phien_am": "Lối xưa khá cải liền,\nViệc mới phải cần chuyên,\nCá vượt Long Môn khỏi,\nCốt phàm hóa Thánh Tiên",
+      "dich_nghia": "",
+      "luan_giai_dan_gian": "Quẻ ứng cầu tài đại lợi,\nChổ trông chắc đặng có ngày,\nNgười đau bịnh đứt, mạnh không sai,\nToan tính việc chi cũng tốt,\nCố lý người về lập nghiệp,\nPhương xa kẻ ở ấm no,\nSang xuân bông nở, há cần lo,\nMuôn việc khỏi ai ngăn cản\n$$$"
+    },
+    {
+      "id": 3,
+      "ten": "Khúc - Trực",
+      "phan_loai": "",
+      "ke_goc": "Cử động nhắm theo thời,\nCầu tài cậy sức người,\nGặp ngày mồ kỉ thổ,\nTrăm việc ắt xong xuôi",
+      "phien_am": "Cử động nhắm theo thời,\nCầu tài cậy sức người,\nGặp ngày mồ kỉ thổ,\nTrăm việc ắt xong xuôi",
+      "dich_nghia": "",
+      "luan_giai_dan_gian": "Quẻ ứng cầu tài đặng ít\nNgười đau sớm tối khó qua,\nKẻ đi chẳng vội trở về nhà,\nThưa kiện làm ăn thất bại,\nChổ muốn không trông nên việc,\nChuyện lo khó đặng vừa lòng,\nÐến thời Trời độ, vận hành thông,\nBuồn trước, vui sau sẽ thấy.\n$$$"
+    },
+    {
+      "id": 4,
+      "ten": "Nhuận - Hạ",
+      "phan_loai": "Trung thượng",
+      "ke_goc": "Thuyền đắm giữa dòng sâu,\nKhó cầu đặng bửu châu,\nKhá tua ra sức cả,\nPhước đến, dứt ưu sầu.",
+      "phien_am": "Thuyền đắm giữa dòng sâu,\nKhó cầu đặng bửu châu,\nKhá tua ra sức cả,\nPhước đến, dứt ưu sầu.",
+      "dich_nghia": "",
+      "luan_giai_dan_gian": "Sầu thảm lòng khó giải,\nSở cầu trăm việc chẳng xong,\nKhá tua lùi bước,đặng thonh dong,\nNương cậy người hay mới tiện,\nDường thể đêm đông sẵn lửa,\nCũng như cây héo gặp xuân,\nÐợi mưa qua khỏi, hết phù vận,\nPhát hiện một vầng tỏ rạng.\n$$$"
+    },
+    {
+      "id": 5,
+      "ten": "Viêm - Thượng",
+      "phan_loai": "Trung bình",
+      "ke_goc": "Nam phương quẻ bất tường,\nLửa nóng thế khôn đương,\nKiện cáo văn thơ trệ,\nVương thêm chút họa ương",
+      "phien_am": "Nam phương quẻ bất tường,\nLửa nóng thế khôn đương,\nKiện cáo văn thơ trệ,\nVương thêm chút họa ương",
+      "dich_nghia": "",
+      "luan_giai_dan_gian": "Quẻ ứng nhiều điều lo sợ,\nThường hay dụ dự trong lòng,\nThối thì êm việc, tấn thì lòng - dòng,\nNay khá noi theo lối cũ,\nÐương Hạ bông tàn xơ xải,\nSang Thu cúc trổ phương phi,\nTới thời gặp vận, chớ sầu bi,\nLiền thấy tự nhiên nên việc.\n$$$"
+    },
+    {
+      "id": 6,
+      "ten": "Giá - Sắc",
+      "phan_loai": "Trung bình",
+      "ke_goc": "Mồ kỉ ở trung ương,\nHết hung gặp kiết tường,\nSang Trần, Phu Tử khổn,\nLui tới chửa thông đường.",
+      "phien_am": "Mồ kỉ ở trung ương,\nHết hung gặp kiết tường,\nSang Trần, Phu Tử khổn,\nLui tới chửa thông đường.",
+      "dich_nghia": "",
+      "luan_giai_dan_gian": "Mỗi việc thảy đều ngăn trở,\nTrước hay hao tán của tiền,\nKẻ đi chẳng vội trở về liền,\nNgười bệnh khôn bề thuyên giảm,\nViệc muốn cầu chưa nên đặng,\nÐừng lo thời vận lươn khươn,\nLúc nầy rán giữ kẻo tai ương,\nSắp tới, tuyệt đường họa hại.\n$$$"
+    },
+    {
+      "id": 7,
+      "ten": "Viễn Tấn",
+      "phan_loai": "Thượng đại kiết",
+      "ke_goc": "Nhà cửa đặng bình yên,\nLần lần thấy của tiền.\nCầu đâu nên việc đó,\nTật bịnh giảm thuyên liền.",
+      "phien_am": "Nhà cửa đặng bình yên,\nLần lần thấy của tiền.\nCầu đâu nên việc đó,\nTật bịnh giảm thuyên liền.",
+      "dich_nghia": "",
+      "luan_giai_dan_gian": "Quẻ ứng cầu tài đẹp ý,\nKhởi công lựa bữa canh tân.\nNgười đi xứ lạ, đặng châu trân,\nBịnh mạnh trăm điều khỏi tốn.\nTranh luận, bua quan, đắc thắng,\nRất mừng nên việc vợ chồng.\nCao nhơn vừa thấy, đã vui lòng,\nChắc đặng trùng phùng phước lộc.\n$$$"
+    },
+    {
+      "id": 8,
+      "ten": "Ðắc Trợ",
+      "phan_loai": "Thượng thưọng kiết",
+      "ke_goc": "Trời độ, việc dều an,\nCủa nghin h tiếp phước ban.\nQuới nhơn giùm giúp sức,\nPhước lộc đặng hân hoan.",
+      "phien_am": "Trời độ, việc dều an,\nCủa nghin h tiếp phước ban.\nQuới nhơn giùm giúp sức,\nPhước lộc đặng hân hoan.",
+      "dich_nghia": "",
+      "luan_giai_dan_gian": "Quẻ ứng kim năng sanh thủy,\nÂm dương có kẻ trợ an.\nCầu quan, áo tía mặc vinh vang,\nXứ lạ cầu tài đặng lợi.\nThành kỉnh đốt hương khẩn đảo,\nGiúp thầm trên có Thánh Thần.\nXum vầy con cháu rất vui mầng,\nChổ muốn vừa lòng đẹp ý.\n$$$"
+    },
+    {
+      "id": 9,
+      "ten": "Hoạch An",
+      "phan_loai": "Trung thượng",
+      "ke_goc": "Nay tỉ cội mùa đông,\nXơ rơ chửa trổ bông.\nLần lần xuân sắc trổ,\nChồi tược nảy đều đồng.",
+      "phien_am": "Nay tỉ cội mùa đông,\nXơ rơ chửa trổ bông.\nLần lần xuân sắc trổ,\nChồi tược nảy đều đồng.",
+      "dich_nghia": "",
+      "luan_giai_dan_gian": "Quẻ ứng lòng thường dụ dự,\nHết buồn, vui tới, chớ nghi.\nNgười xa áo gấm mặc vinh qui,\nTật bịnh khỏi lo trì trệ.\nGả cưới hiệp hòa vinh hiển,\nViệc quan chẳng ngại điều chi.\nDường như bông liểu trổ phương phi,\nTrước mắt nhiều người hòa thuận.\n$$$"
+    },
+    {
+      "id": 10,
+      "ten": "Tùy Tâm",
+      "phan_loai": "Thượng thượng",
+      "ke_goc": "Mát mẻ cảnh ngày xuân,\nVật tàn bổng tái hưng.\nMưa lai rai lại gặp,\nGội đức đặng tu nhuần.",
+      "phien_am": "Mát mẻ cảnh ngày xuân,\nVật tàn bổng tái hưng.\nMưa lai rai lại gặp,\nGội đức đặng tu nhuần.",
+      "dich_nghia": "",
+      "luan_giai_dan_gian": "Quẻ ứng cầu tài đặng lợi,\nNgười đi áo gấm về nhà.\nHôn nhơn hòa hiệp chẳng sai ngoa,\nTranh luận, thị phi đều dứt.\nBỗng đặng cao thăng tước lộc,\nGiàu sang vinh hiển phỉ lòng.\nÐời nay ruộng phước, giống lo trồng,\nKiếp tới đặng vàng đầy đống.\n$$$"
+    },
+    {
+      "id": 11,
+      "ten": "Bá Ðạt",
+      "phan_loai": "Thượng thượng",
+      "ke_goc": "Tai tan,cửa dữ gài,\nPhước tới, cửa lành khai.\nXa cách nay tương hội,\nChắc phần đặng hoạch tài.",
+      "phien_am": "Tai tan,cửa dữ gài,\nPhước tới, cửa lành khai.\nXa cách nay tương hội,\nChắc phần đặng hoạch tài.",
+      "dich_nghia": "",
+      "luan_giai_dan_gian": "Quẻ ứng trên hòa dưới thuận,\nTự nhiên hưởng phước thanh nhàn.\nCầu tài tứ xứ phải lần sang,\nDanh lợi đặng theo lòng muốn.\nTrời hạn mạ nhờ mưa rưới,\nThuyền con xuôi gió vững lòng.\nCảnh xuân dòng nước trải về đông.\nTrăm việc đều yên khỏi ngại.\n$$$"
+    },
+    {
+      "id": 12,
+      "ten": "Ðể An",
+      "phan_loai": "Thượng đại kiết",
+      "ke_goc": "Nên việc ý hân hoan,\nTrò nghèo áo gấm ban.\nTiền trình xuân nhựt thấy,\nNgoạn cảnh bước xuê xang.",
+      "phien_am": "Nên việc ý hân hoan,\nTrò nghèo áo gấm ban.\nTiền trình xuân nhựt thấy,\nNgoạn cảnh bước xuê xang.",
+      "dich_nghia": "",
+      "luan_giai_dan_gian": "Quẻ ứng điềm lành nên việc,\nHạp thời bái tướng phong hầu.\nQuới nhơn chực dắt đến sân chầu,\nThọ lãnh ấn vàng đai tía.\nTài lợi cầu thêm bá bội,\nNgười đi đẹp ý vui lòng.\nTrung thu tỏ rạng ánh trăng trong,\nSoi khắp kiền khôn thế giới\n$$$"
+    },
+    {
+      "id": 13,
+      "ten": "Cử Tấn",
+      "phan_loai": "Hạ hạ",
+      "ke_goc": "Trong nước hiện trăng thinh,\nBóng không chẳng thấy hình.\nTiền tài hay thất tán,\nDè dặt đặng an ninh.",
+      "phien_am": "Trong nước hiện trăng thinh,\nBóng không chẳng thấy hình.\nTiền tài hay thất tán,\nDè dặt đặng an ninh.",
+      "dich_nghia": "",
+      "luan_giai_dan_gian": "Giáp mộc khắc mồ kỉ thổ,\nThan ôi ! việc tính khó thành.\nHao tài, tổn vật, thất nhơn tình,\nÐừng với tiều nhơn tranh cạnh.\nMuôn việc noi theo lối cũ,\nÐỗi dời chẳng gặp điềm may.\nPhải cầu Thần Thánh, nguyện hằng ngày,\nMới đặng ít nhiều duyên phước.\n$$$"
+    },
+    {
+      "id": 14,
+      "ten": "An Tịnh",
+      "phan_loai": "Trung bình",
+      "ke_goc": "Công việc chẳng an vui,\nTính toan sự khó xuôi.\nTốt hơn l.o thối bước,\nGiữ phận họa tai lui.",
+      "phien_am": "Công việc chẳng an vui,\nTính toan sự khó xuôi.\nTốt hơn l.o thối bước,\nGiữ phận họa tai lui.",
+      "dich_nghia": "",
+      "luan_giai_dan_gian": "Quẻ ứng khá noi theo lối cũ,\nViệc nên tránh, chớ bài ra.\nGiữ mình tiết liệm, đặng an hòa,\nTùy phận, tùy duyên, qua buổi.\nNếu muốn đầy nhà vàng ngọc,\nKhác nào một giấc Nam Kha.\nNên tìm nơi vắng, niệm Di Ðà,\nNguyện độ tai qua nạn khỏi.\n$$$"
+    },
+    {
+      "id": 15,
+      "ten": "Trở Cách",
+      "phan_loai": "Hạ hạ",
+      "ke_goc": "Cây héo gặp xuân tàn,\nThuyền con bị gió đàn.\nTấm thân không chỗ dựa,\nTrăm việc chẳng hoàn toàn.",
+      "phien_am": "Cây héo gặp xuân tàn,\nThuyền con bị gió đàn.\nTấm thân không chỗ dựa,\nTrăm việc chẳng hoàn toàn.",
+      "dich_nghia": "",
+      "luan_giai_dan_gian": "Quẻ ứng nhiều điều ngăn trở,\nTính toan, lòng chẳng phỉ nguyền.\nNên noi lối cũ tại lâm tuyền,\nMới khỏi rầu buồn tai hại.\nChớ ước quan cao lộc cả,\nÐừng mong ngựa báu, áo cầu.\nThuận theo thời vận, chớ cượng cầu,\nKhẩn đảo Phật Trời đặng phước.\n$$$"
+    },
+    {
+      "id": 16,
+      "ten": "Tiêu Ách",
+      "phan_loai": "Thượng kiết",
+      "ke_goc": "Vầng hồng chiếu bốn phang,\nThiên hạ hưởng thanh nhàn.\nGiao tiếp nên hòa hiệp,\nTự nhiên việc đặng an.",
+      "phien_am": "Vầng hồng chiếu bốn phang,\nThiên hạ hưởng thanh nhàn.\nGiao tiếp nên hòa hiệp,\nTự nhiên việc đặng an.",
+      "dich_nghia": "",
+      "luan_giai_dan_gian": "Bính kỉ hai can chẳng khắc,\nTự nhiên muôn việc an bài.\nChẳng nên thủ cựu, đổi thì hay,\nNgười đến phương xa vô hại.\nThưa kiện án từ đắc thắng,\nCầu tài điềm ứng phỉ nguyền.\nXem kinh niệm Phật đặng bình yên,\nSẽ hưởng công hầu vinh hiển.\n$$$"
+    },
+    {
+      "id": 17,
+      "ten": "Chí Hỉ",
+      "phan_loai": "Trung thượng",
+      "ke_goc": "Bịnh dứt, thể thân an,\nBua quan, thuận rãnh rang.\nTử đây noi lối cũ,\nTai họa phải tiêu tan.",
+      "phien_am": "Bịnh dứt, thể thân an,\nBua quan, thuận rãnh rang.\nTử đây noi lối cũ,\nTai họa phải tiêu tan.",
+      "dich_nghia": "",
+      "luan_giai_dan_gian": "Ðiềm ứng cang nhu hai lẽ,\nViệc chi hòa hảo mới thành.\nNhỏ nhoi giữ phận, chớ đua tranh.\nNhịn đặng, tiêu trừ tai họa.\nQuân tử vận thời điên đảo,\nTiểu nhơn đắc thế khoe khoang.\nCúc vàng chừng gặp tiết thu sang,\nThơm ngát mùi bay khắp chốn.\n$$$"
+    },
+    {
+      "id": 18,
+      "ten": "Dụ Dự",
+      "phan_loai": "Hạ hạ",
+      "ke_goc": "Lòng hoảng hốt hằng ngày,\nHao mòn hết vật tài.\nHôn nhơn rồi khốn hại,\nViệc thế chẳng hòa hài.",
+      "phien_am": "Lòng hoảng hốt hằng ngày,\nHao mòn hết vật tài.\nHôn nhơn rồi khốn hại,\nViệc thế chẳng hòa hài.",
+      "dich_nghia": "",
+      "luan_giai_dan_gian": "Trăm việc đều không vừa ý.\nTính toan bối rối thảm sầu.\nLàm ơn dày, lại gặp thù sâu,\nGiữ khéo tiểu nhơn kiện cáo.\nLời nói phải dè cho lắm,\nLợi danh chớ khá tham quàng.\nThu sang mưa dứt, lúc mây tàn,\nTrăng tỏ soi cùng trời đất.\n$$$"
+    },
+    {
+      "id": 19,
+      "ten": "Phong Nẫm",
+      "phan_loai": "Thượng thượng kiết",
+      "ke_goc": "Vận đến đặng giàu to,\nCủa tiền chất dẫy đầy kho.\nBá tòng khi tiết lạnh,\nLan quế trổ thơm tho.",
+      "phien_am": "Vận đến đặng giàu to,\nCủa tiền chất dẫy đầy kho.\nBá tòng khi tiết lạnh,\nLan quế trổ thơm tho.",
+      "dich_nghia": "",
+      "luan_giai_dan_gian": "Phước, lộc, thọ, đồng giúp sức,\nTrúng mùa, vật đủ, người giàu.\nViệc chi toan tính, ắt nên mau.\nThân thích phương xa về tới,\nTật bịnh không thầy cũng mạnh,\nThị phi, khẩu thiệt trừ xong.\nThưòng lo niệm Phật, chẳng nài công,\nSẽ đặng phong quan vinh hiển.\n$$$"
+    },
+    {
+      "id": 20,
+      "ten": "Ðắc Lộc",
+      "phan_loai": "Thượng thượng kiết",
+      "ke_goc": "Lộc vị bởi cao danh,\nChim lồng đặng phóng sanh.\nMong tìm tài bửu đặng,\nViễn xứ phải thân hành.",
+      "phien_am": "Lộc vị bởi cao danh,\nChim lồng đặng phóng sanh.\nMong tìm tài bửu đặng,\nViễn xứ phải thân hành.",
+      "dich_nghia": "",
+      "luan_giai_dan_gian": "Vận tốt phải toan lướt tới,\nChẳng nên thủ cựu diên trì.\nMạng phần đặng mặc tử la y,\nNương kẻ phương xa mới tiện.\nTài lợi phỉ lòng ao ước,\nViệc xong chớ khá hồ nghi.\nPhải cầu Trời Ðất với Thần, Kỳ,\nPhò hộ phước lành đặng hưởng.\n$$$"
+    },
+    {
+      "id": 21,
+      "ten": "Phước Lộc",
+      "phan_loai": "Thượng thượng kiết",
+      "ke_goc": "Phước lộc đặng tăng gia,\nThinh danh bổng phát ra.\nPhỉ lòng nay gặp vận,\nTiếng tốt khắp truyền xa.",
+      "phien_am": "Phước lộc đặng tăng gia,\nThinh danh bổng phát ra.\nPhỉ lòng nay gặp vận,\nTiếng tốt khắp truyền xa.",
+      "dich_nghia": "",
+      "luan_giai_dan_gian": "Quẻ ứng điềm lành phát đạt,\nHọa lui, phước đến vô cùng.\nCầu tài phỉ dạ, đặng thung dung,\nRực rở yên thân, ngựa tốt,\nChỗ ước đặng theo lòng muốn,\nNgười đi áo gấm về nhà.\nTRong băm hai, chẳng quẻ nào qua,\nPhước lộc càng theo đầy đủ.\n$$$"
+    },
+    {
+      "id": 22,
+      "ten": "Minh Hiển",
+      "phan_loai": "Thượng kiết",
+      "ke_goc": "Vầng trăng rạng đứng đầu,\nChiếu sáng rở đêm thâu.\nMột mảy mây đà sạch,\nDậm trường cảnh một màu.",
+      "phien_am": "Vầng trăng rạng đứng đầu,\nChiếu sáng rở đêm thâu.\nMột mảy mây đà sạch,\nDậm trường cảnh một màu.",
+      "dich_nghia": "",
+      "luan_giai_dan_gian": "Vận trước hởi còn mờ ám,\nNgày nay đã sáng như gương.\nCầu tài gặp hội, khá dinh thương,\nXuôi nước, buồm trương gió thuận.\nKhẩu thiệt, bua quan tránh khỏi,\nKẻ đau mình đặng nhẹ lần.\nÐảo nguyền Trời, Phật, Thánh, Tiên, Thần,\nGia quyến tự nhiên gặp phước.\n$$$"
+    },
+    {
+      "id": 23,
+      "ten": "Ngưng Trệ",
+      "phan_loai": "Hạ hạ",
+      "ke_goc": "Ngựa gầy tách dậm ngàn,\nNgười đói bước đàng tràng.\nThân phận, thời không hạp,\nViệc chi cũng lỡ làng.",
+      "phien_am": "Ngựa gầy tách dậm ngàn,\nNgười đói bước đàng tràng.\nThân phận, thời không hạp,\nViệc chi cũng lỡ làng.",
+      "dich_nghia": "",
+      "luan_giai_dan_gian": "Quẻ ứng ra điềm trở cách.\nViệc chi cũng hóa diên trì.\nChớ lìa nhà, xứ lạ ra đi,\nTài lợi khó cầu cho gặp.\nCãi lẫy sanh ra kiện cáo.\nCoi chừng tật bịnh vấn vương.\nMuốn cho yên ổn, khỏi tai ương,\nVan vái Thần minh mới tiện.\n$$$"
+    },
+    {
+      "id": 24,
+      "ten": "Vinh Hiển",
+      "phan_loai": "Thượng thượng kiết",
+      "ke_goc": "Tam gia dưỡng tánh lành,\nNgươn thỉ khí bèn sanh.\nQuả bởi lòng đào tạo,\nTự nhiên các việc thành.",
+      "phien_am": "Tam gia dưỡng tánh lành,\nNgươn thỉ khí bèn sanh.\nQuả bởi lòng đào tạo,\nTự nhiên các việc thành.",
+      "dich_nghia": "",
+      "luan_giai_dan_gian": "Quẻ ứng có mòi thạnh vượng,\nViệc nhà tính tới thì xong.\nChỗ mong cầu đã ứng theo lòng,\nÐặng trọn, muôn không sót một.\nKẻ bịnh bỗng liền khỏe mạnh,\nBua quan hữu lý chớ nghi.\nMuốn cầu tài, rất hợp cơ thì,\nKhởi sự làm chi cũng lợi.\n$$$"
+    },
+    {
+      "id": 25,
+      "ten": "Phước Hậu",
+      "phan_loai": "Thượng thượng",
+      "ke_goc": "Xa cách lại trùng phùng,\nMập mờ đặng lãu thộng.\nChỗ trông đều phỉ dạ\nVui phận đặng thong dong.",
+      "phien_am": "Xa cách lại trùng phùng,\nMập mờ đặng lãu thộng.\nChỗ trông đều phỉ dạ\nVui phận đặng thong dong.",
+      "dich_nghia": "",
+      "luan_giai_dan_gian": "Quẻ ứng tương sanh điềm tốt,\nViệc làm gặp phước hân hoan.\nỞ yên, khoái lạc, phận thanh nhàn,\nHòa hiệp lòng vui chẳng xiết.\nBuôn bán khỏi lo trở ngại.\nTiếng nhơ, điều quấy, tiêu trừ.\nNgười đi kể đã mấy năm dư,\nMừng đặng ngày nay tụ hội.\n$$$"
+    },
+    {
+      "id": 26,
+      "ten": "Vĩnh Thành",
+      "phan_loai": "Thượng thượng",
+      "ke_goc": "Năm tới ít tai khiên,\nNhờ âm chất tổ tiên.\nViệc chi toan tính đến,\nTrời sẽ giúp nên liền.",
+      "phien_am": "Năm tới ít tai khiên,\nNhờ âm chất tổ tiên.\nViệc chi toan tính đến,\nTrời sẽ giúp nên liền.",
+      "dich_nghia": "",
+      "luan_giai_dan_gian": "Quẻ ứng làm chi nên nấy,\nLo khăm trăm việc an bài.\nCửa nhà hưng vượng, đặng lậu dài,\nPhải rán giữ gìn nhơn đức.\nXứ lạ người đi về đến,\nKẻ đau thân thể nhẹ nhàn.\nThị phi, thù oán, đã tiêu tan,\nHọa dứt đời đời hưởng phước.\n$$$"
+    },
+    {
+      "id": 27,
+      "ten": "Tuế Nẩm",
+      "phan_loai": "Thượng thượng",
+      "ke_goc": "Mạ tươi bởi gặp mưa,\nGặt hái khá hơn xưa.\nMuôn việc đều vừa ý,\nRầu lo dạ khỏi ngừa.",
+      "phien_am": "Mạ tươi bởi gặp mưa,\nGặt hái khá hơn xưa.\nMuôn việc đều vừa ý,\nRầu lo dạ khỏi ngừa.",
+      "dich_nghia": "",
+      "luan_giai_dan_gian": "Chẳng khác mùa đông cội thọ,\nBổng đâu lại bước qua xuân.\nCây khô mưa xuống, tược chồi hưng,\nSăng cỏ thảy đều tư nhuận.\nChín họa, ba tai tiêu tán,\nMuôn hung, ngàn dữ lánh xa.\nLòng vui mầng phú quí vinh hoa,\nVận đến lợi tài đầy dẫy.\n$$$"
+    },
+    {
+      "id": 28,
+      "ten": "Khai Phát",
+      "phan_loai": "Thượng thương",
+      "ke_goc": "Ngọc sò chiếu rỡ ràng,\nTrong đá ẩn kim cang.\nCác việc cầu đều tốt,\nNgười phàm nhập Thánh bang.",
+      "phien_am": "Ngọc sò chiếu rỡ ràng,\nTrong đá ẩn kim cang.\nCác việc cầu đều tốt,\nNgười phàm nhập Thánh bang.",
+      "dich_nghia": "",
+      "luan_giai_dan_gian": "Hòa hảo là điềm thiệt quí,\nThời nên lộc vị thêm cao.\nThẻ ngà, giày thấm, tử la bào,\nNgực tốt, gươm vàng đẹp đẻ.\nBịnh hoạn thảy mau mạnh khỏe,\nCầu tài tiền của đặng nhiều.\nRán trau lòng niệm Phật mai chiều,\nThời ắt họa tai tiêu diệt.\n$$$"
+    },
+    {
+      "id": 29,
+      "ten": "Thiên Lộc",
+      "phan_loai": "Thượng thượng",
+      "ke_goc": "Thắng giặc chốn sa tràng,\nBan sư đặng nghỉ an.\nCông thành danh chí toại,\nNhà cửa rất xuê xang.",
+      "phien_am": "Thắng giặc chốn sa tràng,\nBan sư đặng nghỉ an.\nCông thành danh chí toại,\nNhà cửa rất xuê xang.",
+      "dich_nghia": "",
+      "luan_giai_dan_gian": "Muôn việc thảy đều lành tốt,\nLộc Trời số vận gặp thì.\nQuới nhơn thường giúp sức phò trì,\nQuan chức càng yhêm cao trọng.\nPhước đến cho người mạng hảo,\nHọa tai tiêu diệt bình an.\nVóc hình khương kiện, dạ hân hoan,\nTiền của dẫy đầy chau báu.\n$$$"
+    },
+    {
+      "id": 30,
+      "ten": "Hậu Hỉ",
+      "phan_loai": "Trung kiết",
+      "ke_goc": "Ðến bực mới lìa thuyền,\nKhỏi cầu gặp đất liền.\nRộn ràng lo hiểm trở,\nThong thả đặng lòng yên.",
+      "phien_am": "Ðến bực mới lìa thuyền,\nKhỏi cầu gặp đất liền.\nRộn ràng lo hiểm trở,\nThong thả đặng lòng yên.",
+      "dich_nghia": "",
+      "luan_giai_dan_gian": "Làm việc lòng còn nghi ngại,\nDẫu nên chưa chắc phỉ nguyền.\nCầu quan tuy trọng dụng cao thiên,\nSong cũng chẳng vừa lòng muốn.\nHiểm trở kềm lòng chớ ngại,\nLần lần tại lại khỏi mình.\nKhác nào như gấm, sắc hoa xinh,\nTước lộc càng thêm vinh diệu.\n$$$"
+    },
+    {
+      "id": 31,
+      "ten": "Trì Trệ",
+      "phan_loai": "Hạ hạ",
+      "ke_goc": "Muôn dặm thẳng vơi vơi,\nÐầu non khuất mặt trời.\nLòng lo không chổ trú,\nKhởi việc chẳng nhằm thời.",
+      "phien_am": "Muôn dặm thẳng vơi vơi,\nÐầu non khuất mặt trời.\nLòng lo không chổ trú,\nKhởi việc chẳng nhằm thời.",
+      "dich_nghia": "",
+      "luan_giai_dan_gian": "Mạng vận rất nên hiểm trở,\nVí như xe sụp xuống lầy.\nÐường dài mặt nhựt lặng về tây,\nKhôn liệu tìm phương cư ngụ.\nKhó kiếm người quen nương dựa,\nCầu tài mỏn vốn không lời.\nKhá xem kinh, niệm Phật, cầu Trời,\nMới đặng Thần Tiên che chở.\n$$$"
+    },
+    {
+      "id": 32,
+      "ten": "Tuyệt Tích",
+      "phan_loai": "Hạ hạ",
+      "ke_goc": "Bụi lấp kiến lu lờ,\nNgọc quỳnh dập dưới dơ.\nNhư trong hang đá tối,\nBao thưở khỏi lờ mờ.",
+      "phien_am": "Bụi lấp kiến lu lờ,\nNgọc quỳnh dập dưới dơ.\nNhư trong hang đá tối,\nBao thưở khỏi lờ mờ.",
+      "dich_nghia": "",
+      "luan_giai_dan_gian": "Quẻ ấy là điềm lo ngại,\nVận thời như tối ban đêm.\nGiữ theo lối cũ, chớ bày thêm,\nE phải thị phi, bệnh hoạn.\nMuôn việc đều không đặng tốt,\nÐổi dời lo lắng chẳng thành.\nKhá cầu Trời Phật rán làm lành,\nMới đặng họa tai tiêu diệt."
+    }
+  ]
+}
