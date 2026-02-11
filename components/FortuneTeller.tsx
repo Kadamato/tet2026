@@ -1,23 +1,146 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useCallback, useReducer } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { GiCardRandom } from "react-icons/gi";
 import { FORTUNES, Fortune } from "../data/fortunes";
 
 const STORE_KEY = "lunar_new_year_fortune_2026";
 
+// --- State Management (useReducer) ---
+
+interface FortuneState {
+  isOpen: boolean;
+  step: "intro" | "shaking" | "result";
+  fortune: Fortune | null;
+  canDraw: boolean;
+}
+
+type FortuneAction =
+  | { type: "OPEN" }
+  | { type: "CLOSE" }
+  | { type: "START_SHAKING" }
+  | { type: "DRAW_FORTUNE"; payload: Fortune }
+  | { type: "RESTORE_FORTUNE"; payload: { fortune: Fortune; canDraw: boolean } }
+  | { type: "RESET_STEP" };
+
+function fortuneReducer(
+  state: FortuneState,
+  action: FortuneAction,
+): FortuneState {
+  switch (action.type) {
+    case "OPEN":
+      return {
+        ...state,
+        isOpen: true,
+        step:
+          !state.canDraw && state.fortune ? "result" : "intro",
+      };
+    case "CLOSE":
+      return { ...state, isOpen: false };
+    case "START_SHAKING":
+      return { ...state, step: "shaking" };
+    case "DRAW_FORTUNE":
+      return {
+        ...state,
+        fortune: action.payload,
+        step: "result",
+        canDraw: false,
+      };
+    case "RESTORE_FORTUNE":
+      return {
+        ...state,
+        fortune: action.payload.fortune,
+        canDraw: action.payload.canDraw,
+        step: !action.payload.canDraw ? "result" : state.step,
+      };
+    case "RESET_STEP":
+      return {
+        ...state,
+        step: state.canDraw ? "intro" : state.step,
+      };
+    default:
+      return state;
+  }
+}
+
+const initialState: FortuneState = {
+  isOpen: false,
+  step: "intro",
+  fortune: null,
+  canDraw: true,
+};
+
+// --- Animation Variants (module-level constants) ---
+
+const modalTransition = {
+  type: "spring" as const,
+  stiffness: 300,
+  damping: 25,
+  mass: 0.8,
+  opacity: { duration: 0.2 },
+};
+
+const buttonSpring = {
+  type: "spring" as const,
+  stiffness: 400,
+  damping: 17,
+};
+
+const stepTransition = {
+  type: "spring" as const,
+  stiffness: 350,
+  damping: 30,
+  mass: 0.8,
+  opacity: { duration: 0.2 },
+};
+
+const introVariants = {
+  initial: { opacity: 0, x: 20 },
+  animate: { opacity: 1, x: 0 },
+  exit: { opacity: 0, x: -20 },
+};
+
+const shakingVariants = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  exit: { opacity: 0 },
+};
+
+const resultContainerVariants = {
+  initial: { opacity: 0, scale: 0.9 },
+  animate: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      type: "spring" as const,
+      stiffness: 300,
+      damping: 25,
+      staggerChildren: 0.08,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const resultChildVariants = {
+  initial: { opacity: 0, y: 15 },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring" as const, stiffness: 300, damping: 25 },
+  },
+};
+
+// --- Component ---
+
 interface FortuneTellerProps {
   audioEnabled: boolean;
 }
 
-export const FortuneTeller: React.FC<FortuneTellerProps> = ({
+const FortuneTellerComponent: React.FC<FortuneTellerProps> = ({
   audioEnabled,
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [step, setStep] = useState<"intro" | "shaking" | "result">("intro");
-  const [fortune, setFortune] = useState<Fortune | null>(null);
-  const [canDraw, setCanDraw] = useState(true);
+  const [state, dispatch] = useReducer(fortuneReducer, initialState);
+  const { isOpen, step, fortune, canDraw } = state;
 
-  // Audio ref for controlling playback
   const audioRef = React.useRef<HTMLAudioElement | null>(null);
 
   // Check if user has already drawn today
@@ -28,14 +151,13 @@ export const FortuneTeller: React.FC<FortuneTellerProps> = ({
         const { date, fortuneId } = JSON.parse(savedData);
         const today = new Date().toDateString();
         if (date === today) {
-          setCanDraw(false);
           const savedFortune = FORTUNES.find((f) => f.id === fortuneId);
           if (savedFortune) {
-            setFortune(savedFortune);
-            setStep("result"); // Directly show result if already drawn
+            dispatch({
+              type: "RESTORE_FORTUNE",
+              payload: { fortune: savedFortune, canDraw: false },
+            });
           }
-        } else {
-          setCanDraw(true);
         }
       } catch {
         localStorage.removeItem(STORE_KEY);
@@ -53,46 +175,34 @@ export const FortuneTeller: React.FC<FortuneTellerProps> = ({
     };
   }, []);
 
-  const handleOpen = () => {
-    setIsOpen(true);
-    if (!canDraw && fortune) {
-      setStep("result");
-    } else {
-      setStep("intro");
-    }
-  };
+  const handleOpen = useCallback(() => {
+    dispatch({ type: "OPEN" });
+  }, []);
 
-  const handleClose = () => {
-    setIsOpen(false);
-    // Cleanup audio if closed during shaking
+  const handleClose = useCallback(() => {
+    dispatch({ type: "CLOSE" });
     if (audioRef.current) {
       audioRef.current.pause();
       audioRef.current.currentTime = 0;
     }
+  }, []);
 
-    // Reset step to intro only if we can draw, otherwise keep result
-    if (canDraw) {
-      setTimeout(() => setStep("intro"), 300);
-    }
-  };
-
-  const startShaking = () => {
+  const startShaking = useCallback(() => {
     if (audioEnabled) {
       if (!audioRef.current) {
         audioRef.current = new Audio("/coin-drop.mp3");
       }
       audioRef.current.volume = 0.6;
-      audioRef.current.loop = true; // Loop until result
+      audioRef.current.loop = true;
       audioRef.current.currentTime = 0;
       audioRef.current
         .play()
         .catch((e) => console.warn("Audio play failed", e));
     }
-    setStep("shaking");
-  };
+    dispatch({ type: "START_SHAKING" });
+  }, [audioEnabled]);
 
-  const drawFortune = () => {
-    // Stop audio
+  const drawFortune = useCallback(() => {
     if (audioRef.current) {
       audioRef.current.pause();
       audioRef.current.currentTime = 0;
@@ -100,17 +210,18 @@ export const FortuneTeller: React.FC<FortuneTellerProps> = ({
 
     const randomIndex = Math.floor(Math.random() * FORTUNES.length);
     const selectedFortune = FORTUNES[randomIndex];
-    setFortune(selectedFortune);
-    setStep("result");
-    setCanDraw(false);
+    dispatch({ type: "DRAW_FORTUNE", payload: selectedFortune });
 
-    // Save to local storage
     const today = new Date().toDateString();
     localStorage.setItem(
       STORE_KEY,
       JSON.stringify({ date: today, fortuneId: selectedFortune.id }),
     );
-  };
+  }, []);
+
+  const handleExitComplete = useCallback(() => {
+    dispatch({ type: "RESET_STEP" });
+  }, []);
 
   return (
     <>
@@ -118,7 +229,9 @@ export const FortuneTeller: React.FC<FortuneTellerProps> = ({
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
+        transition={buttonSpring}
         onClick={handleOpen}
+        style={{ willChange: "transform" }}
         className="fixed top-16 left-4 md:top-auto md:left-auto md:bottom-6 md:right-6 z-50 bg-red-800 text-yellow-400 border-2 border-yellow-500 rounded-full w-14 h-14 md:w-16 md:h-16 flex items-center justify-center shadow-[0_0_15px_rgba(234,179,8,0.5)] font-serif font-bold text-xs md:text-sm leading-tight text-center"
       >
         <span className="md:w-8 md:h-8 flex items-center justify-center">
@@ -127,21 +240,25 @@ export const FortuneTeller: React.FC<FortuneTellerProps> = ({
       </motion.button>
 
       {/* Modal Overlay */}
-      <AnimatePresence>
+      <AnimatePresence onExitComplete={handleExitComplete}>
         {isOpen && (
           <div className="fixed inset-0 z-[60] flex items-center justify-center px-4 py-6 md:py-0">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
               onClick={handleClose}
-              className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+              style={{ willChange: "opacity" }}
+              className="absolute inset-0 bg-black/85"
             />
 
             <motion.div
               initial={{ scale: 0.9, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              transition={modalTransition}
+              style={{ willChange: "transform, opacity" }}
               className="relative bg-[#2c0808] border-2 border-yellow-600 rounded-lg w-full max-w-lg max-h-[85vh] md:max-h-none flex flex-col shadow-[0_0_50px_rgba(220,38,38,0.3)] text-center overflow-hidden"
             >
               <div className="absolute inset-0 opacity-10 bg-[url('/textures/black-scales.png')] mix-blend-overlay pointer-events-none"></div>
@@ -168,13 +285,16 @@ export const FortuneTeller: React.FC<FortuneTellerProps> = ({
                   </svg>
                 </button>
 
-                <AnimatePresence mode="wait">
+                <AnimatePresence mode="popLayout">
                   {step === "intro" && (
                     <motion.div
                       key="intro"
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -20 }}
+                      variants={introVariants}
+                      initial="initial"
+                      animate="animate"
+                      exit="exit"
+                      transition={stepTransition}
+                      style={{ willChange: "transform, opacity" }}
                       className="flex flex-col items-center gap-4 md:gap-6 pt-2"
                     >
                       <h2 className="text-xl md:text-3xl font-serif text-yellow-500 font-bold uppercase tracking-wider">
@@ -195,7 +315,9 @@ export const FortuneTeller: React.FC<FortuneTellerProps> = ({
                       <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
+                        transition={buttonSpring}
                         onClick={startShaking}
+                        style={{ willChange: "transform" }}
                         className="mt-2 md:mt-4 px-6 md:px-8 py-2 md:py-3 bg-gradient-to-r from-red-700 to-red-900 border border-yellow-500 rounded text-yellow-400 font-bold text-sm md:text-base tracking-widest uppercase shadow-lg hover:shadow-yellow-500/20 transition-all"
                       >
                         Tâm Thành Đã Nguyện
@@ -206,29 +328,37 @@ export const FortuneTeller: React.FC<FortuneTellerProps> = ({
                   {step === "shaking" && (
                     <motion.div
                       key="shaking"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
+                      variants={shakingVariants}
+                      initial="initial"
+                      animate="animate"
+                      exit="exit"
+                      transition={{ duration: 0.2 }}
                       className="flex flex-col items-center gap-8 py-8"
                     >
                       <motion.div
                         animate={{
-                          rotate: [0, -10, 10, -10, 10, 0],
-                          y: [0, -5, 5, -5, 5, 0],
+                          rotate: [0, -12, 10, -10, 12, -8, 6, 0],
+                          y: [0, -6, 4, -5, 6, -3, 2, 0],
                         }}
                         transition={{
-                          duration: 0.5,
-                          repeat: 5,
-                          ease: "linear",
+                          duration: 0.6,
+                          repeat: 4,
+                          ease: [0.36, 0.07, 0.19, 0.97],
+                          repeatType: "loop",
                         }}
                         onAnimationComplete={drawFortune}
+                        style={{ willChange: "transform" }}
                         className="w-24 h-36 md:w-32 md:h-48 bg-gradient-to-br from-yellow-700 to-yellow-900 rounded-lg border-4 border-yellow-500 relative flex items-center justify-center shadow-2xl"
                       >
                         <div className="absolute top-0 w-full h-full bg-[url('/textures/wood-pattern.png')] opacity-30 mix-blend-multiply"></div>
                         <motion.div
                           className="text-4xl md:text-6xl text-yellow-500/80"
                           animate={{ y: [0, -10, 0] }}
-                          transition={{ duration: 0.2, repeat: 14 }}
+                          transition={{
+                            duration: 0.25,
+                            repeat: 11,
+                            ease: "easeOut",
+                          }}
                         >
                           ☲
                         </motion.div>
@@ -242,20 +372,28 @@ export const FortuneTeller: React.FC<FortuneTellerProps> = ({
                   {step === "result" && fortune && (
                     <motion.div
                       key="result"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
+                      variants={resultContainerVariants}
+                      initial="initial"
+                      animate="animate"
+                      style={{ willChange: "transform, opacity" }}
                       className="flex flex-col items-center gap-3 md:gap-4 text-center pb-4"
                     >
-                      <div className="w-full border-b border-yellow-500/30 pb-2 mb-2">
+                      <motion.div
+                        variants={resultChildVariants}
+                        className="w-full border-b border-yellow-500/30 pb-2 mb-2"
+                      >
                         <span className="text-yellow-600/70 font-serif text-xs md:text-sm uppercase tracking-[0.2em] block mb-1">
                           Quẻ Số {fortune.id}
                         </span>
                         <h3 className="text-xl md:text-3xl text-yellow-400 font-bold font-serif uppercase">
                           {fortune.title}
                         </h3>
-                      </div>
+                      </motion.div>
 
-                      <div className="my-2 md:my-4 space-y-2">
+                      <motion.div
+                        variants={resultChildVariants}
+                        className="my-2 md:my-4 space-y-2"
+                      >
                         {fortune.poem.map((line, idx) => (
                           <p
                             key={idx}
@@ -264,9 +402,12 @@ export const FortuneTeller: React.FC<FortuneTellerProps> = ({
                             {line}
                           </p>
                         ))}
-                      </div>
+                      </motion.div>
 
-                      <div className="bg-black/20 p-3 md:p-4 rounded border border-yellow-500/10 w-full mt-2 text-left md:text-center">
+                      <motion.div
+                        variants={resultChildVariants}
+                        className="bg-black/20 p-3 md:p-4 rounded border border-yellow-500/10 w-full mt-2 text-left md:text-center"
+                      >
                         <p className="text-yellow-500 font-bold mb-1 font-serif text-sm md:text-base">
                           Ý Nghĩa
                         </p>
@@ -280,12 +421,15 @@ export const FortuneTeller: React.FC<FortuneTellerProps> = ({
                         <p className="text-red-200 text-xs md:text-sm leading-relaxed">
                           {fortune.interpretation}
                         </p>
-                      </div>
+                      </motion.div>
 
                       {!canDraw && (
-                        <p className="text-[10px] md:text-xs text-yellow-500/50 mt-4 italic">
+                        <motion.p
+                          variants={resultChildVariants}
+                          className="text-[10px] md:text-xs text-yellow-500/50 mt-4 italic"
+                        >
                           Bạn đã gieo quẻ hôm nay. Hãy quay lại vào ngày mai.
-                        </p>
+                        </motion.p>
                       )}
                     </motion.div>
                   )}
@@ -298,3 +442,7 @@ export const FortuneTeller: React.FC<FortuneTellerProps> = ({
     </>
   );
 };
+
+FortuneTellerComponent.displayName = "FortuneTeller";
+
+export const FortuneTeller = React.memo(FortuneTellerComponent);
