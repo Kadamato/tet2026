@@ -113,7 +113,7 @@ const App: React.FC = () => {
       <Fireworks ref={fireworksRef} audioEnabled={audioEnabled} />
 
       {/* Fortune Teller */}
-      <FortuneTeller />
+      <FortuneTeller audioEnabled={audioEnabled} />
 
       {/* Test Controls (Environment based) */}
       <TestControls onLaunch={handleManualLaunch} />

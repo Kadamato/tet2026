@@ -5,11 +5,20 @@ import { FORTUNES, Fortune } from "../data/fortunes";
 
 const STORE_KEY = "lunar_new_year_fortune_2026";
 
-export const FortuneTeller: React.FC = () => {
+interface FortuneTellerProps {
+  audioEnabled: boolean;
+}
+
+export const FortuneTeller: React.FC<FortuneTellerProps> = ({
+  audioEnabled,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [step, setStep] = useState<"intro" | "shaking" | "result">("intro");
   const [fortune, setFortune] = useState<Fortune | null>(null);
   const [canDraw, setCanDraw] = useState(true);
+
+  // Audio ref for controlling playback
+  const audioRef = React.useRef<HTMLAudioElement | null>(null);
 
   // Check if user has already drawn today
   useEffect(() => {
@@ -34,6 +43,16 @@ export const FortuneTeller: React.FC = () => {
     }
   }, []);
 
+  // Cleanup audio on unmount
+  useEffect(() => {
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
+  }, []);
+
   const handleOpen = () => {
     setIsOpen(true);
     if (!canDraw && fortune) {
@@ -45,6 +64,12 @@ export const FortuneTeller: React.FC = () => {
 
   const handleClose = () => {
     setIsOpen(false);
+    // Cleanup audio if closed during shaking
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
+
     // Reset step to intro only if we can draw, otherwise keep result
     if (canDraw) {
       setTimeout(() => setStep("intro"), 300);
@@ -52,10 +77,27 @@ export const FortuneTeller: React.FC = () => {
   };
 
   const startShaking = () => {
+    if (audioEnabled) {
+      if (!audioRef.current) {
+        audioRef.current = new Audio("/coin-drop.mp3");
+      }
+      audioRef.current.volume = 0.6;
+      audioRef.current.loop = true; // Loop until result
+      audioRef.current.currentTime = 0;
+      audioRef.current
+        .play()
+        .catch((e) => console.warn("Audio play failed", e));
+    }
     setStep("shaking");
   };
 
   const drawFortune = () => {
+    // Stop audio
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
+
     const randomIndex = Math.floor(Math.random() * FORTUNES.length);
     const selectedFortune = FORTUNES[randomIndex];
     setFortune(selectedFortune);
