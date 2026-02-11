@@ -12,6 +12,12 @@ import {
 import { Firework, Particle, FireworkType } from "../types";
 import { isMainEvent, isDailyShow } from "../utils";
 
+// Performance constants
+const TWO_PI = Math.PI * 2;
+const MAX_TOTAL_PARTICLES = 2000;
+const PARTICLE_RADIUS = 2;
+const LAUNCH_RADIUS = 3;
+
 interface FireworksProps {
   audioEnabled: boolean;
 }
@@ -232,19 +238,19 @@ const Fireworks = forwardRef<FireworksHandle, FireworksProps>(
         let drag = 0.96; // Air resistance
 
         if (type === "sphere" || type === "strobe") {
-          const angle = random(0, Math.PI * 2);
+          const angle = random(0, TWO_PI);
           const speed = random(1, 8);
           vx = Math.cos(angle) * speed;
           vy = Math.sin(angle) * speed;
           if (type === "strobe") decay = random(0.01, 0.02);
         } else if (type === "ring") {
-          const angle = (Math.PI * 2 * i) / particleCount;
+          const angle = (TWO_PI * i) / particleCount;
           const speed = 6;
           vx = Math.cos(angle) * speed;
           vy = Math.sin(angle) * speed;
           decay = 0.02;
         } else if (type === "willow") {
-          const angle = random(0, Math.PI * 2);
+          const angle = random(0, TWO_PI);
           const speed = random(1, 10);
           vx = Math.cos(angle) * speed;
           vy = Math.sin(angle) * speed;
@@ -331,8 +337,15 @@ const Fireworks = forwardRef<FireworksHandle, FireworksProps>(
           if (Math.random() > 0.7) forcedType = "willow"; // More classy willows
         }
 
-        // Random spawn based on rate
-        if (spawnRate > 0 && Math.random() < spawnRate) {
+        // Count total active particles for cap enforcement
+        const fireworks = fireworksRef.current;
+        let totalParticles = 0;
+        for (let i = 0; i < fireworks.length; i++) {
+          totalParticles += fireworks[i].particles.length;
+        }
+
+        // Random spawn based on rate (only if under particle cap)
+        if (spawnRate > 0 && Math.random() < spawnRate && totalParticles < MAX_TOTAL_PARTICLES) {
           // Occasionally spawn multiple in finale
           const count =
             isMainEventTime && minutesIntoNeYear > 55 && Math.random() > 0.5
@@ -341,12 +354,15 @@ const Fireworks = forwardRef<FireworksHandle, FireworksProps>(
 
           for (let k = 0; k < count; k++) {
             const fw = createFirework(canvas.width, canvas.height, forcedType);
-            fireworksRef.current.push(fw);
+            fireworks.push(fw);
           }
         }
 
-        for (let i = fireworksRef.current.length - 1; i >= 0; i--) {
-          const fw = fireworksRef.current[i];
+        const cw = canvas.width;
+        const ch = canvas.height;
+
+        for (let i = fireworks.length - 1; i >= 0; i--) {
+          const fw = fireworks[i];
 
           if (!fw.exploded) {
             fw.x += fw.vx;
@@ -354,7 +370,7 @@ const Fireworks = forwardRef<FireworksHandle, FireworksProps>(
             fw.vy += 0.15; // Launch gravity
 
             ctx.beginPath();
-            ctx.arc(fw.x, fw.y, 3, 0, Math.PI * 2);
+            ctx.arc(fw.x, fw.y, LAUNCH_RADIUS, 0, TWO_PI);
             ctx.fillStyle = fw.color;
             ctx.fill();
 
@@ -364,39 +380,50 @@ const Fireworks = forwardRef<FireworksHandle, FireworksProps>(
               // No separate explosion sound, the launch sound carries through
             }
           } else {
-            for (let j = fw.particles.length - 1; j >= 0; j--) {
-              const p = fw.particles[j];
+            const particles = fw.particles;
+
+            // Phase 1: Update physics and remove dead particles
+            for (let j = particles.length - 1; j >= 0; j--) {
+              const p = particles[j];
 
               // Physics update
               p.x += p.vx;
               p.y += p.vy;
-              p.vy += p.gravity; // Gravity
-              p.vx *= p.drag; // Air resistance
+              p.vy += p.gravity;
+              p.vx *= p.drag;
               p.vy *= p.drag;
 
               // Strobe effect
               if (fw.type === "strobe") {
-                // Flicker alpha randomly
                 p.alpha = Math.random() > 0.5 ? 1 : 0.3;
                 p.alpha -= p.decay;
               } else {
                 p.alpha -= p.decay;
               }
 
-              if (p.alpha <= 0) {
-                fw.particles.splice(j, 1);
-                continue;
+              // Remove dead or far-offscreen particles using swap-and-pop (O(1) vs O(n) splice)
+              if (p.alpha <= 0 || p.y > ch + 100) {
+                particles[j] = particles[particles.length - 1];
+                particles.pop();
               }
+            }
 
-              ctx.beginPath();
-              ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
-              ctx.fillStyle = p.color;
-              ctx.globalAlpha = p.alpha;
-              ctx.fill();
+            // Phase 2: Batch render alive particles (set fillStyle once per firework)
+            if (particles.length > 0) {
+              ctx.fillStyle = fw.color;
+              for (let j = 0; j < particles.length; j++) {
+                const p = particles[j];
+                // Skip offscreen particles (still alive for physics, just not drawn)
+                if (p.x < -20 || p.x > cw + 20 || p.y < -20) continue;
+                ctx.globalAlpha = p.alpha;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, PARTICLE_RADIUS, 0, TWO_PI);
+                ctx.fill();
+              }
               ctx.globalAlpha = 1;
             }
 
-            if (fw.particles.length === 0) {
+            if (particles.length === 0) {
               fw.dead = true;
             }
           }
@@ -404,7 +431,12 @@ const Fireworks = forwardRef<FireworksHandle, FireworksProps>(
           if (fw.dead) {
             // Stop the sound when the firework is completely gone
             stopSound(fw.audioSource, fw.audioGain);
-            fireworksRef.current.splice(i, 1);
+            // Swap-and-pop for O(1) removal instead of O(n) splice
+            const last = fireworks.length - 1;
+            if (i !== last) {
+              fireworks[i] = fireworks[last];
+            }
+            fireworks.pop();
           }
         }
 
