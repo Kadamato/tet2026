@@ -44,7 +44,7 @@ const App: React.FC = () => {
               strokeWidth={1.5}
               stroke="currentColor"
               className="w-6 h-6"
-            > 
+            >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -75,7 +75,7 @@ const App: React.FC = () => {
       <div className="absolute inset-0 opacity-20 bg-[url('/textures/asfalt-dark.png')] mix-blend-overlay"></div>
 
       {/* Decorative Lanterns */}
-      <div className="absolute top-12 w-full flex justify-between px-10 md:px-32 pointer-events-none z-20">
+      <div className="absolute top-12 w-full hidden md:flex justify-between px-10 md:px-32 pointer-events-none z-20">
         <Lantern delay={0} className="-ml-10 lg:ml-0 h-32 md:h-40" />
         <Lantern delay={1.5} className="mt-12 hidden md:flex" scale={0.8} />
         <Lantern delay={0.5} className="-mr-10 lg:mr-0 h-32 md:h-40" />
@@ -94,7 +94,7 @@ const App: React.FC = () => {
             <div className="h-[1px] w-8 md:w-12 bg-yellow-500/50"></div>
             <p className="text-red-200 text-lg md:text-2xl font-serif italic tracking-wide">
               Năm con ngựa
-            </p> 
+            </p>
             <div className="h-[1px] w-8 md:w-12 bg-yellow-500/50"></div>
           </div>
         </motion.div>
