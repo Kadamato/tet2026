@@ -1,6 +1,5 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+
+![Tet Family Celebration](./public/banner.jpg)
 
 # Tet Traditional Viet Nam
 
@@ -16,8 +15,7 @@ This app is built with a playful, immersive feel and is designed to pair nicely 
 
 **Prerequisites:** Node.js
 
-1. Install dependencies:
-   `npm install`
-2. Set `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key.
-3. Run the app:
-   `npm run dev`
+Set `VITE_ENABLE_FIREWORKS=true` to enable fireworks or `VITE_ENABLE_FIREWORKS=false` to disable them.
+VITE_ENABLE_TEST_MODE=false
+
+
