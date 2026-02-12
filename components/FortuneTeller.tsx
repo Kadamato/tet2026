@@ -31,8 +31,7 @@ function fortuneReducer(
       return {
         ...state,
         isOpen: true,
-        step:
-          !state.canDraw && state.fortune ? "result" : "intro",
+        step: !state.canDraw && state.fortune ? "result" : "intro",
       };
     case "CLOSE":
       return { ...state, isOpen: false };

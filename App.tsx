@@ -5,12 +5,14 @@ import Lantern from "./components/Lantern";
 import MarqueeHeader from "./components/MarqueeHeader";
 import TestControls from "./components/TestControls";
 import { FortuneTeller } from "./components/FortuneTeller";
+import { Calligraphy } from "./components/Calligraphy";
 import { FireworkType } from "./types";
 
 import { motion } from "framer-motion";
 
 const App: React.FC = () => {
   const [audioEnabled, setAudioEnabled] = useState(true);
+  const [showCalligraphy, setShowCalligraphy] = useState(false);
   const fireworksRef = useRef<FireworksHandle>(null);
 
   const toggleAudio = () => {
@@ -115,8 +117,39 @@ const App: React.FC = () => {
       {/* Fortune Teller */}
       <FortuneTeller audioEnabled={audioEnabled} />
 
+      {/* Calligraphy Overlay */}
+      {showCalligraphy && (
+        <Calligraphy onBack={() => setShowCalligraphy(false)} />
+      )}
+
       {/* Test Controls (Environment based) */}
       <TestControls onLaunch={handleManualLaunch} />
+
+      {/* Calligraphy Toggle Button - Positioned next to Fortune Teller */}
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={() => setShowCalligraphy(true)}
+        className="fixed top-16 left-24 md:top-auto md:left-auto md:bottom-6 md:right-28 z-50 bg-red-800/80 text-yellow-500 border-2 border-yellow-500 rounded-full w-14 h-14 md:w-16 md:h-16 flex items-center justify-center shadow-[0_0_15px_rgba(234,179,8,0.3)] backdrop-blur-sm transition-colors"
+        title="Xin Chữ Đầu Xuân"
+      >
+        {/* Calligraphy Brush Icon */}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          className="w-8 h-8 md:w-9 md:h-9"
+        >
+          <path
+            fillRule="evenodd"
+            d="M20.599 1.563a1.5 1.5 0 0 1 .3 2.1l-6 9a1.5 1.5 0 0 1-2.28.22l-4-4a1.5 1.5 0 0 1 .22-2.28l9-6a1.5 1.5 0 0 1 2.1.3l.66.66Zm-5.46 11.137a3 3 0 0 0-4.07 0l-3.23 3.23a3 3 0 0 0-.88 2.12v1.5a1.5 1.5 0 0 0 3 0v-1.5a1.5 1.5 0 0 0-.44-1.06l1.24-1.24a1.5 1.5 0 1 1 2.12-2.12l2.26-2.26v-.67Z"
+            clipRule="evenodd"
+          />
+          <path d="M5.5 19.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0Z" />
+        </svg>
+      </motion.button>
+
+      {/* Calligraphy Toggle Button - Positioned next to Fortune Teller */}
 
       {/* Overlay Vignette */}
       <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-black/40 via-transparent to-black/40 z-10"></div>
