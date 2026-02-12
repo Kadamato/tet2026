@@ -2,19 +2,22 @@
 <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 </div>
 
-# Run and deploy your AI Studio app
+# Tet Traditional Viet Nam
 
-This contains everything you need to run your app locally.
+This project celebrates Tet (Tet Nguyen Dan), the Vietnamese Lunar New Year. Tet is the most important holiday in Viet Nam, marking a fresh start with family reunions, ancestral remembrance, and wishes for health, luck, and prosperity. Homes are cleaned and decorated, altars are prepared, and people offer respect to ancestors before stepping into the new year.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1IGEKbBYqqvDG97AR6bcvNiO7WHqmEj0T
+Common Tet symbols include apricot blossoms in the South, peach blossoms in the North, kumquat trees, red-and-gold lucky envelopes, and traditional foods like banh chung and banh tet. The festival blends ancient customs with joyful modern gatherings, fireworks, and community festivities.
+
+## Vibe Coding With Gemini Support
+
+This app is built with a playful, immersive feel and is designed to pair nicely with Gemini-powered iterations. Gemini support is used to help ideate themes, refine visuals, and speed up experimentation. The goal is to keep the coding flow fast, creative, and celebratory.
 
 ## Run Locally
 
-**Prerequisites:**  Node.js
-
+**Prerequisites:** Node.js
 
 1. Install dependencies:
    `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+2. Set `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key.
 3. Run the app:
    `npm run dev`
